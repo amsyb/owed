@@ -75,6 +75,7 @@ export default function Navigator() {
       }
 
       const data = await response.json();
+      console.log(data);
       const reply =
         data.choices?.[0]?.message?.content ||
         data.choices?.[0]?.text ||
