@@ -16,7 +16,7 @@ function calculateViolations({ hourlyRate, weeklyHours, weeksWorked }) {
     const amount = (ESA.minimumWage - hourlyRate) * totalHours;
     violations.push({
       type: "Minimum Wage Violation",
-      detail: `Paid $${hourlyRate}/hr — minimum is $${ESA.minimumWage}/hr`,
+      detail: `Paid $${hourlyRate}/hr , minimum is $${ESA.minimumWage}/hr`,
       law: "ESA s.23",
       amount,
     });
@@ -84,11 +84,11 @@ export default function WageCalculator() {
       .join(", ");
 
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
+          model: "mistralai/mistral-7b-instruct",
           max_tokens: 1000,
           messages: [
             {
@@ -129,7 +129,7 @@ Make it professional, cite specific ESA sections, give a 14-day response deadlin
       <h2 className="section__title">Wage Calculator</h2>
       <p className="section__subtitle">
         Calculates what you're owed under Ontario's Employment Standards Act.
-        Numbers are exact — not estimates.
+        Numbers are exact, not estimates.
       </p>
 
       <div className="calculator__fields">
@@ -184,12 +184,12 @@ Make it professional, cite specific ESA sections, give a 14-day response deadlin
           {letter && (
             <div className="letter">
               <div className="letter__label">
-                Draft Demand Letter — Review before sending
+                Draft Demand Letter, Review before sending
               </div>
               <div className="letter__body">{letter}</div>
               <div className="letter__disclaimer">
                 Replace all bracketed placeholders before sending. Sending this
-                letter is your decision — this tool does not send it on your
+                letter is your decision, this tool does not send it on your
                 behalf.
               </div>
             </div>

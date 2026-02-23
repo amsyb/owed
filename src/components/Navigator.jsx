@@ -27,12 +27,12 @@ Your job:
 
 Keep responses concise and action-oriented. Use plain language. Always cite the specific law (ESA section or RTA provision).
 
-IMPORTANT: Never contact anyone on the user's behalf. Never file anything. Your role ends at preparation — the human decides when and if to escalate.`;
+IMPORTANT: Never contact anyone on the user's behalf. Never file anything. Your role ends at preparation , the human decides when and if to escalate.`;
 
 const INITIAL_MESSAGE = {
   role: "assistant",
   content:
-    'Hi. This is a private space to understand your rights as a worker or tenant in Ontario.\n\nNothing here is shared with anyone — not your employer, not your landlord, not the government — unless you decide to take action yourself.\n\nTell me what\'s going on. You can start with something like:\n\n→ "I think I\'ve been underpaid"\n→ "My landlord won\'t fix my heat"\n→ "I was fired and don\'t know if it was legal"\n\nWhat\'s happening?',
+    'Hi. This is a private space to understand your rights as a worker or tenant in Ontario.\n\nNothing here is shared with anyone , not your employer, not your landlord, not the government , unless you decide to take action yourself.\n\nTell me what\'s going on. You can start with something like:\n\n→ "I think I\'ve been underpaid"\n→ "My landlord won\'t fix my heat"\n→ "I was fired and don\'t know if it was legal"\n\nWhat\'s happening?',
 };
 
 export default function Navigator() {
@@ -55,21 +55,24 @@ export default function Navigator() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      const response = await fetch("/api/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
+        },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
+          model: "mistralai/mistral-7b-instruct",
           max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: newMessages.map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            ...newMessages.map((m) => ({ role: m.role, content: m.content })),
+          ],
         }),
       });
       const data = await response.json();
-      const reply = data.content?.[0]?.text || "Sorry, something went wrong.";
+      const reply =
+        data.choices?.[0]?.message?.content || "Sorry, something went wrong.";
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
       setMessages((prev) => [

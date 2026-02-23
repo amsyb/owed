@@ -11,7 +11,7 @@ const STEPS = [
     number: "02",
     title: "Calculate and document",
     description:
-      "Use the Wage Calculator to produce exact figures. Keep records — pay stubs, schedules, messages.",
+      "Use the Wage Calculator to produce exact figures. Keep records , pay stubs, schedules, messages.",
     consequence: "Builds your case if you escalate later.",
     isHumanDecision: false,
   },
@@ -39,8 +39,8 @@ const STEPS = [
 
 const LINKS = [
   [
-    "Ministry of Labour — File an ESA Claim",
-    "https://www.ontario.ca/page/employment-standards-act",
+    "Ministry of Labour , File an ESA Claim",
+    "https://www.ontario.ca/document/your-guide-employment-standards-act-0/filing-claim",
   ],
   ["Landlord and Tenant Board", "https://tribunalsontario.ca/ltb/"],
   ["Ontario Human Rights Commission", "https://www.ohrc.on.ca/"],
