@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Navigator from "./components/Navigator";
+import WageCalculator from "./components/WageCalculator";
+import YourOptions from "./components/YourOptions";
+import "./styles/main.scss";
 
-function App() {
-  const [count, setCount] = useState(0)
+const TABS = [
+  { id: "chat", label: "Navigator" },
+  { id: "calculator", label: "Wage Calculator" },
+  { id: "escalation", label: "Your Options" },
+];
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState("chat");
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="app">
+      <header className="header">
+        <div className="header__left">
+          <div className="header__dot" />
+          <span className="header__title">Owed</span>
+          <span className="header__region">Ontario, CA</span>
+        </div>
+        <div className="header__right">PRIVATE · SECURE · NO DATA SHARED</div>
+      </header>
 
-export default App
+      <nav className="tabs">
+        {TABS.map((tab) => (
+          <button
+            key={tab.id}
+            className={`tabs__btn ${activeTab === tab.id ? "tabs__btn--active" : ""}`}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </nav>
+
+      <main className="main">
+        {activeTab === "chat" && <Navigator />}
+        {activeTab === "calculator" && <WageCalculator />}
+        {activeTab === "escalation" && <YourOptions />}
+      </main>
+    </div>
+  );
+}
