@@ -1,0 +1,658 @@
+// ─────────────────────────────────────────────
+// OWED — Design Tokens
+// Edit these to restyle the entire app
+// ─────────────────────────────────────────────
+
+// Colors
+$bg: #0a0a0a;
+$bg-card: #111;
+$bg-elevated: #161616;
+$border: #2a2a2a;
+$border-soft: #1e1e1e;
+
+$text-primary: #e8e4dc;
+$text-secondary: #888;
+$text-muted: #555;
+$text-faint: #333;
+
+$accent: #c8f07a; // ← main green accent, change this to restyle
+$accent-dim: rgba(200, 240, 122, 0.27);
+$accent-warning: #e8c06a;
+$accent-danger: #e87a6a;
+$accent-danger-dim: rgba(232, 122, 106, 0.13);
+
+// Typography
+$font-serif: "Georgia", "Times New Roman", serif;
+$font-size-base: 15px;
+$font-size-sm: 13px;
+$font-size-xs: 12px;
+$font-size-xxs: 11px;
+$font-size-lg: 16px;
+$font-size-xl: 22px;
+$font-size-xxl: 28px;
+
+// Spacing
+$radius: 8px;
+$radius-sm: 6px;
+$radius-xs: 4px;
+
+// ─────────────────────────────────────────────
+// Reset & Base
+// ─────────────────────────────────────────────
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $bg;
+  color: $text-primary;
+  font-family: $font-serif;
+  font-size: $font-size-base;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: $bg;
+}
+::-webkit-scrollbar-thumb {
+  background: $border;
+  border-radius: 2px;
+}
+
+// ─────────────────────────────────────────────
+// App Shell
+// ─────────────────────────────────────────────
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// ─────────────────────────────────────────────
+// Header
+// ─────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-bottom: 1px solid $border-soft;
+  background: $bg;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $accent;
+    box-shadow: 0 0 8px $accent;
+  }
+
+  &__title {
+    font-size: $font-size-sm;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $text-secondary;
+  }
+
+  &__region {
+    font-size: $font-size-xxs;
+    color: $border;
+  }
+
+  &__right {
+    font-size: $font-size-xxs;
+    color: $border;
+    letter-spacing: 0.1em;
+  }
+}
+
+// ─────────────────────────────────────────────
+// Tabs
+// ─────────────────────────────────────────────
+
+.tabs {
+  display: flex;
+  padding: 0 32px;
+  border-bottom: 1px solid $border-soft;
+  background: $bg;
+
+  &__btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: $text-muted;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: $font-size-xxs;
+    font-family: $font-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    margin-bottom: -1px;
+
+    &:hover {
+      color: $text-secondary;
+    }
+
+    &--active {
+      color: $accent;
+      border-bottom-color: $accent;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// Main content area
+// ─────────────────────────────────────────────
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// ─────────────────────────────────────────────
+// Shared section styles
+// ─────────────────────────────────────────────
+
+.section__title {
+  font-size: $font-size-xl;
+  font-weight: normal;
+  margin-bottom: 8px;
+  color: $text-primary;
+}
+
+.section__subtitle {
+  font-size: $font-size-sm;
+  color: $text-muted;
+  margin-bottom: 36px;
+  letter-spacing: 0.05em;
+}
+
+// ─────────────────────────────────────────────
+// Buttons
+// ─────────────────────────────────────────────
+
+.btn {
+  border: none;
+  border-radius: $radius-sm;
+  padding: 12px 28px;
+  font-size: $font-size-sm;
+  font-family: $font-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &--primary {
+    background: $accent;
+    color: $bg;
+    margin-bottom: 36px;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $accent;
+    border: 1px solid $accent-dim;
+    width: 100%;
+    margin-top: 28px;
+
+    &:hover {
+      background: $accent-dim;
+    }
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// Navigator (Chat)
+// ─────────────────────────────────────────────
+
+.navigator {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  &__messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 60vh;
+    max-height: 65vh;
+  }
+
+  &__input-area {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    border-top: 1px solid $border-soft;
+    padding: 20px 0 28px;
+  }
+
+  &__textarea {
+    flex: 1;
+    background: $bg-card;
+    border: 1px solid $border;
+    border-radius: $radius;
+    padding: 12px 16px;
+    color: $text-primary;
+    font-size: $font-size-base;
+    font-family: $font-serif;
+    resize: none;
+    outline: none;
+    line-height: 1.6;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: $text-faint;
+    }
+    &:focus {
+      border-color: $accent-dim;
+    }
+  }
+
+  &__send {
+    background: $bg-elevated;
+    color: $text-faint;
+    border: none;
+    border-radius: $radius;
+    padding: 12px 20px;
+    cursor: default;
+    font-size: $font-size-sm;
+    font-family: $font-serif;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+    white-space: nowrap;
+
+    &--active {
+      background: $accent;
+      color: $bg;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &__disclaimer {
+    text-align: center;
+    font-size: $font-size-xxs;
+    color: $text-faint;
+    padding-bottom: 16px;
+    letter-spacing: 0.08em;
+  }
+}
+
+// Messages
+.message {
+  display: flex;
+
+  &--user {
+    justify-content: flex-end;
+  }
+
+  &--assistant {
+    justify-content: flex-start;
+  }
+
+  &__bar {
+    width: 6px;
+    min-width: 6px;
+    background: $accent;
+    border-radius: 3px;
+    margin-right: 16px;
+    margin-top: 4px;
+    align-self: stretch;
+    opacity: 0.7;
+  }
+
+  &__content {
+    max-width: 80%;
+    font-size: $font-size-base;
+    line-height: 1.7;
+    white-space: pre-wrap;
+
+    .message--user & {
+      background: $bg-elevated;
+      border: 1px solid $border;
+      border-radius: $radius;
+      padding: 12px 16px;
+      color: #ccc;
+    }
+
+    .message--assistant & {
+      color: $text-primary;
+    }
+  }
+}
+
+// Typing indicator
+.typing {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+
+  span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $accent;
+    opacity: 0.6;
+    animation: pulse 1.2s ease-in-out infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+// ─────────────────────────────────────────────
+// Wage Calculator
+// ─────────────────────────────────────────────
+
+.calculator {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  width: 100%;
+
+  &__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__results {
+    border-top: 1px solid $border-soft;
+    padding-top: 32px;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  &__total-label {
+    font-size: $font-size-sm;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $text-secondary;
+  }
+
+  &__total-amount {
+    font-size: $font-size-xxl;
+    color: $accent;
+  }
+}
+
+// Form fields
+.field {
+  &__label {
+    display: block;
+    font-size: $font-size-xxs;
+    color: #666;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    width: 100%;
+    background: $bg-card;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    padding: 10px 14px;
+    color: $text-primary;
+    font-size: $font-size-base;
+    font-family: $font-serif;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: $text-faint;
+    }
+    &:focus {
+      border-color: $accent-dim;
+    }
+  }
+}
+
+// Violations
+.violation {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid $bg-elevated;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__type {
+    font-size: $font-size-base;
+    color: $text-primary;
+  }
+  &__detail {
+    font-size: $font-size-xs;
+    color: $text-muted;
+  }
+  &__law {
+    font-size: $font-size-xxs;
+    color: $accent-dim;
+    letter-spacing: 0.08em;
+  }
+
+  &__amount {
+    font-size: 18px;
+    color: $accent;
+    white-space: nowrap;
+    margin-left: 24px;
+  }
+}
+
+// Demand letter
+.letter {
+  margin-top: 24px;
+  background: #0e0e0e;
+  border: 1px solid $border-soft;
+  border-radius: $radius;
+  padding: 24px;
+
+  &__label {
+    font-size: $font-size-xxs;
+    color: $accent;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  &__body {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #ccc;
+    white-space: pre-wrap;
+  }
+
+  &__disclaimer {
+    margin-top: 20px;
+    font-size: $font-size-xxs;
+    color: $text-faint;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 16px;
+  }
+}
+
+// ─────────────────────────────────────────────
+// Your Options
+// ─────────────────────────────────────────────
+
+.options {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  width: 100%;
+
+  &__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  &__links {
+    background: #0e0e0e;
+    border: 1px solid $border-soft;
+    border-radius: $radius;
+    padding: 20px 24px;
+  }
+
+  &__links-title {
+    font-size: $font-size-xxs;
+    color: $text-muted;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  &__link {
+    display: block;
+    color: rgba(200, 240, 122, 0.53);
+    font-size: $font-size-sm;
+    text-decoration: none;
+    padding: 6px 0;
+    border-bottom: 1px solid $bg-elevated;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $accent;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// Steps
+.step {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+
+  &__number {
+    font-size: $font-size-xxs;
+    color: $accent;
+    letter-spacing: 0.15em;
+    font-weight: bold;
+    min-width: 24px;
+    padding-top: 4px;
+  }
+
+  &--human &__number {
+    color: $accent-danger;
+  }
+
+  &__body {
+    flex: 1;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    color: $text-primary;
+  }
+
+  &__badge {
+    font-size: 10px;
+    background: $accent-danger-dim;
+    color: $accent-danger;
+    border: 1px solid rgba(232, 122, 106, 0.27);
+    border-radius: $radius-xs;
+    padding: 2px 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    font-size: 14px;
+    color: $text-secondary;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  &__consequence {
+    font-size: $font-size-xs;
+    color: $text-muted;
+
+    .step--human & {
+      color: rgba(232, 122, 106, 0.53);
+    }
+  }
+
+  &__human-note {
+    font-size: $font-size-xs;
+    color: $accent-danger;
+    margin-top: 8px;
+    font-style: italic;
+  }
+}
