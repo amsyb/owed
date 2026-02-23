@@ -69,9 +69,16 @@ export default function Navigator() {
           ],
         }),
       });
+
+      if (!response.ok) {
+        throw new Error("API failed");
+      }
+
       const data = await response.json();
       const reply =
-        data.choices?.[0]?.message?.content || "Sorry, something went wrong.";
+        data.choices?.[0]?.message?.content ||
+        data.choices?.[0]?.text ||
+        "Sorry, something went wrong.";
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
       setMessages((prev) => [
