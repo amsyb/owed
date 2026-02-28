@@ -3,6 +3,7 @@ import Navigator from "./components/Navigator";
 import WageCalculator from "./components/WageCalculator";
 import YourOptions from "./components/YourOptions";
 import "./styles/main.scss";
+import React from "react";
 
 const TABS = [
   { id: "chat", label: "Navigator" },

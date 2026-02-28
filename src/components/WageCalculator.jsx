@@ -88,7 +88,7 @@ export default function WageCalculator() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "mistralai/mistral-7b-instruct",
+          model: "meta-llama/llama-3.3-70b-instruct:free",
           max_tokens: 1000,
           messages: [
             {
@@ -102,7 +102,9 @@ Make it professional, cite specific ESA sections, give a 14-day response deadlin
         }),
       });
       const data = await response.json();
-      setLetter(data.content?.[0]?.text || "Error generating letter.");
+      setLetter(
+        data.choices?.[0]?.message?.content || "Error generating letter.",
+      );
     } catch {
       setLetter("Connection error. Please try again.");
     }

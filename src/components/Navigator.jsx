@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-
+import React from "react";
 const SYSTEM_PROMPT = `You are a rights navigator helping workers and tenants in Ontario, Canada understand and assert their legal rights. You are empathetic, clear, and action-oriented.
 
 Ontario Employment Standards Act (ESA) Key Rules:
@@ -61,7 +61,7 @@ export default function Navigator() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "mistralai/mistral-7b-instruct",
+          model: "meta-llama/llama-3.3-70b-instruct:free",
           max_tokens: 1000,
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
