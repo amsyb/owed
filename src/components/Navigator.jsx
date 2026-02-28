@@ -61,7 +61,7 @@ export default function Navigator() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "meta-llama/llama-3.3-70b-instruct:free",
+          model: "arcee-ai/trinity-large-preview:free",
           max_tokens: 1000,
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
