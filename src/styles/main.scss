@@ -1,6 +1,6 @@
 // Colors
-$bg: #deddd4;
-$bg-card: #d8d7ce;
+$bg: #f1f0e6;
+$bg-card: #f1f0e6;
 $bg-elevated: #d2d1c8;
 $border: #a6a6a2;
 $border-soft: #cccbc2;
@@ -8,7 +8,7 @@ $text-primary: #2a2a24;
 $text-secondary: #5a5a52;
 $text-muted: #8a8a80;
 $text-faint: #b0afa6;
-$accent: #b4bd9e;
+$accent: #d6e0bc;
 $accent-dim: rgba(180, 189, 158, 0.27);
 $accent-warning: #c8a052;
 $accent-danger: #c8604a;
@@ -139,7 +139,7 @@ body::after {
   justify-content: space-between;
   padding: 20px 32px;
   border-bottom: 1px solid $border-soft;
-  background: rgba(222, 221, 212, 0.85);
+  background: #f1f0e6;
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
@@ -163,7 +163,8 @@ body::after {
     font-size: $font-size-sm;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: $text-secondary;
+    // color: $text-secondary;
+    color: black;
   }
 
   &__region {
@@ -186,7 +187,7 @@ body::after {
   display: flex;
   padding: 0 32px;
   border-bottom: 1px solid $border-soft;
-  background: rgba(222, 221, 212, 0.85);
+  background: #f1f0e6;
   backdrop-filter: blur(12px);
   z-index: 10000;
 
@@ -224,7 +225,36 @@ body::after {
   display: flex;
   flex-direction: column;
 }
+// ─────────────────────────────────────────────
+// Updated navigator
+// ─────────────────────────────────────────────
+.navigator__input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
 
+.navigator__textarea {
+  flex: 1;
+  resize: none;
+  min-height: 44px;
+}
+
+.navigator__icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: none;
+  background: #d8dfc7;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.navigator__icon-button:hover {
+  background: white;
+}
 // ─────────────────────────────────────────────
 // Shared section styles
 // ─────────────────────────────────────────────
@@ -313,7 +343,6 @@ body::after {
     display: flex;
     gap: 12px;
     align-items: flex-end;
-    border-top: 1px solid $border-soft;
     padding: 20px 0 28px;
   }
 
@@ -354,7 +383,7 @@ body::after {
 
     &--active {
       background: $accent;
-      color: $bg;
+      color: #454444;
       cursor: pointer;
 
       &:hover {
