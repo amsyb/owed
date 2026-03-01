@@ -5,57 +5,55 @@ const STEPS = [
     number: "01",
     title: "Understand your rights",
     description:
-      "Use the Navigator to get a clear picture of what you're owed and what laws apply. No one is notified.",
+      "Use the Navigator to get a clear picture of your entitlements under Ontario's Employment Standards Act (ESA). This step is fully private — no one is notified.",
     consequence: "Zero consequences. Fully private.",
     isHumanDecision: false,
   },
   {
     number: "02",
-    title: "Calculate and document",
+    title: "Document your case",
     description:
-      "Use the Wage Calculator to produce exact figures. Keep records , pay stubs, schedules, messages.",
-    consequence: "Builds your case if you escalate later.",
+      "Record your hours, pay stubs, schedules, and any relevant messages or communications. This builds evidence for your claim.",
+    consequence: "Prepares you for any future escalation.",
     isHumanDecision: false,
   },
   {
     number: "03",
     title: "Send a demand letter",
     description:
-      "A formal written request directly to your employer or landlord. States what you're owed and gives a deadline.",
-    consequence:
-      "Employer or landlord is notified. No government involvement yet.",
+      "A formal written request to your employer stating what you’re owed and giving a clear deadline for payment or correction.",
+    consequence: "Employer is notified. Still no government involvement.",
     isHumanDecision: false,
   },
   {
     number: "04",
-    title: "File a formal complaint",
+    title: "File a formal ESA complaint",
     description:
-      "Employment: Ministry of Labour (MOL). Tenant: Landlord and Tenant Board (LTB). A government officer gets involved.",
+      "Submit a complaint to the Ministry of Labour (MOL). A government officer reviews your case and may contact your employer.",
     consequence:
-      "Your employer or landlord is officially contacted. This is on record.",
+      "Your employer is officially contacted. This step creates an official record.",
     isHumanDecision: true,
     humanNote:
-      "This decision must stay yours. The consequences are real and irreversible. This tool will never file on your behalf.",
+      "This decision must stay yours. Filing is formal and irreversible. This tool will never file on your behalf.",
   },
 ];
 
 const LINKS = [
   [
-    "Ministry of Labour , File an ESA Claim",
+    "Ministry of Labour — File an ESA Claim",
     "https://www.ontario.ca/document/your-guide-employment-standards-act-0/filing-claim",
   ],
-  ["Landlord and Tenant Board", "https://tribunalsontario.ca/ltb/"],
-  ["Ontario Human Rights Commission", "https://www.ohrc.on.ca/"],
-  ["Community Legal Education Ontario (CLEO)", "https://www.cleo.on.ca/"],
+  ["Ontario Human Rights Commission", "https://www.ohrc.on.ca/en"],
+  ["Community Legal Education Ontario (CLEO)", "https://www.cleo.on.ca/en"],
 ];
 
 export default function YourOptions() {
   return (
     <div className="options">
-      <h2 className="section__title">Your Options</h2>
+      <h2 className="section__title">Your Options as a Worker</h2>
       <p className="section__subtitle">
-        These paths are ordered from lowest to highest escalation. You are in
-        control of each step.
+        These steps guide you from understanding your rights to formal action.
+        You remain in control of each decision.
       </p>
 
       <div className="options__steps">
@@ -83,7 +81,7 @@ export default function YourOptions() {
       </div>
 
       <div className="options__links">
-        <div className="options__links-title">Useful Links</div>
+        <div className="options__links-title">Helpful Resources</div>
         {LINKS.map(([label, url]) => (
           <a
             key={label}
