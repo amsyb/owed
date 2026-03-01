@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { FiPaperclip } from "react-icons/fi";
 import React from "react";
 
 const SYSTEM_PROMPT = `You are a rights navigator helping workers and tenants in Ontario, Canada understand and assert their legal rights. You are empathetic, clear, and action-oriented.
@@ -152,7 +153,7 @@ Remember: This is a preliminary review. You decide what to do next.`,
             disabled={fileLoading}
             title="Upload PDF"
           >
-            +
+            <FiPaperclip size={18} />
           </button>
 
           {/* Textarea (Full Width) */}
