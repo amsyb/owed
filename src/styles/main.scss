@@ -297,8 +297,8 @@ body::after {
   }
 
   &--outline {
-    background: transparent;
-    color: $accent;
+    background: #d6e0bc;
+    color: #454444;
     border: 1px solid $accent-dim;
     width: 100%;
     margin-top: 28px;
@@ -515,7 +515,7 @@ body::after {
 
   &__total-amount {
     font-size: $font-size-xxl;
-    color: $accent;
+    color: #879071;
   }
 }
 
@@ -575,14 +575,14 @@ body::after {
   }
   &__law {
     font-size: $font-size-xxs;
-    color: $accent;
+    color: #454444;
     letter-spacing: 0.08em;
     opacity: 0.6;
   }
 
   &__amount {
     font-size: 18px;
-    color: $accent;
+    color: #879071;
     white-space: nowrap;
     margin-left: 24px;
   }
@@ -598,7 +598,7 @@ body::after {
 
   &__label {
     font-size: $font-size-xxs;
-    color: $accent;
+    color: $accent-warning;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 16px;
