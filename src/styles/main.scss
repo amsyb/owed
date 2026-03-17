@@ -178,6 +178,9 @@ body::after {
     font-size: $font-size-xxs;
     color: $border;
     letter-spacing: 0.1em;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 }
 
@@ -588,7 +591,6 @@ body::after {
   }
 }
 
-// Demand letter
 .letter {
   margin-top: 24px;
   background: $bg-card;
