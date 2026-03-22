@@ -132,7 +132,8 @@ Make it professional, cite specific ESA sections, give a 14-day response deadlin
       <h2 className="section__title">Wage Calculator</h2>
       <p className="section__subtitle">
         Calculates what you're owed under Ontario's Employment Standards Act.
-        Numbers are exact, not estimates.
+        Numbers are exact, not estimates. After seeing what you're owed,
+        generate a demand letter if you wish
       </p>
 
       <div className="calculator__fields">
